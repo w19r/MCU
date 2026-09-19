@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mcu.abdallahalaydi.com — قريبًا</title>
+<style>
+  :root{
+    --void:#050409;
+    --ink:#eae7f3;
+    --ink-dim:#8c86a3;
+    --space:#3fa9ff;
+    --mind:#ffcf3f;
+    --reality:#ff4d4d;
+    --power:#a259ff;
+    --time:#3fffb0;
+    --soul:#ff8a3f;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 15% -10%, #1a1230 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 15%, #0f2338 0%, transparent 45%),
+      var(--void);
+    color:var(--ink);
+    font-family:'Segoe UI', Tahoma, Geneva, 'Noto Sans Arabic', sans-serif;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .stars{ position:fixed; inset:0; z-index:-1; }
+  .stars span{
+    position:absolute; width:2px; height:2px; background:#fff; border-radius:50%;
+    opacity:.3; animation: twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{ 0%,100%{opacity:.12;} 50%{opacity:.75;} }
+
+  main{
+    text-align:center; padding:8vh 6vw; max-width:640px;
+  }
+
+  .orbit-wrap{
+    width:180px; height:180px; margin:0 auto 2.4rem; position:relative;
+  }
+  .orbit-core{
+    position:absolute; top:50%; left:50%; width:26px; height:26px; margin:-13px;
+    border-radius:50%;
+    background:radial-gradient(circle, #fff, #a98bff 60%, transparent 75%);
+    box-shadow:0 0 26px 8px rgba(162,89,255,.5);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{transform:scale(1);} 50%{transform:scale(1.2);} }
+  .orbit{
+    position:absolute; inset:0; border-radius:50%;
+    border:1px dashed rgba(255,255,255,.08);
+    animation: spin 20s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .orbit i{
+    position:absolute; top:50%; left:50%; width:13px; height:13px; margin:-6.5px;
+    border-radius:50%; background:var(--c); box-shadow:0 0 12px 3px var(--c);
+  }
+
+  .eyebrow{
+    color:var(--ink-dim); font-size:.85rem; letter-spacing:.02em; margin:0 0 .8rem;
+    font-family:'Courier New', monospace; direction:ltr; unicode-bidi:isolate;
+  }
+  h1{
+    font-size:clamp(2rem, 7vw, 3.2rem); font-weight:800; margin:0 0 1.1rem;
+    background:linear-gradient(120deg, #fff, #b9a6ff 60%, #7d5fff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  p.sub{
+    color:var(--ink-dim); font-size:1.05rem; max-width:46ch; margin:0 auto 2.2rem;
+  }
+
+  .status{
+    display:inline-flex; align-items:center; gap:.5rem;
+    border:1px solid rgba(255,255,255,.1); border-radius:999px;
+    padding:.55rem 1.2rem; font-size:.9rem; color:var(--ink-dim);
+    background:rgba(255,255,255,.03);
+  }
+  .status .blip{
+    width:8px; height:8px; border-radius:50%; background:var(--time);
+    box-shadow:0 0 8px 2px var(--time);
+    animation: blip 1.6s ease-in-out infinite;
+  }
+  @keyframes blip{ 0%,100%{opacity:1;} 50%{opacity:.3;} }
+
+  footer{
+    position:fixed; bottom:1.6rem; inset-inline:0; text-align:center;
+    color:var(--ink-dim); font-size:.8rem;
+  }
+  footer a{ color:var(--ink-dim); }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<main>
+  <div class="orbit-wrap">
+    <div class="orbit-core"></div>
+    <div class="orbit" id="orbit"></div>
+  </div>
+
+  <p class="eyebrow">MCU.ABDALLAHALAYDI.COM</p>
+  <h1>قريبًا...  عوالم مارفل</h1>
+  <p class="sub">دليل مشاهدة أحجار اللانهاية، والخط الزمني الكامل للملحمة.</p>
+
+  <div class="status">
+    <span class="blip"></span>
+    <span>الموقع قيد التطوير</span>
+  </div>
+</main>
+
+<footer>abdallahalaydi.com</footer>
+
+<script>
+  const starsWrap = document.getElementById('stars');
+  for(let i=0;i<80;i++){
+    const s = document.createElement('span');
+    s.style.top = Math.random()*100 + '%';
+    s.style.left = Math.random()*100 + '%';
+    s.style.animationDelay = (Math.random()*4) + 's';
+    starsWrap.appendChild(s);
+  }
+
+  const colors = ['var(--space)','var(--mind)','var(--reality)','var(--power)','var(--time)','var(--soul)'];
+  const orbit = document.getElementById('orbit');
+  colors.forEach((c, i) => {
+    const dot = document.createElement('i');
+    dot.style.setProperty('--c', c);
+    const angle = (360 / colors.length) * i;
+    const rad = angle * Math.PI / 180;
+    const radius = 82;
+    dot.style.transform = `translate(${Math.cos(rad)*radius}px, ${Math.sin(rad)*radius}px)`;
+    orbit.appendChild(dot);
+  });
+</script>
+
+</body>
+</html>
